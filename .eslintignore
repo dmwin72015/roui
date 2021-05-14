@@ -5,3 +5,5 @@ tools
 node_modules
 coverage
 /.git
+gulpfile.js
+postcss.config.js

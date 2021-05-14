@@ -1,5 +1,4 @@
 import { Story, Meta } from '@storybook/react'
-
 import { CountDown, CountDownProps } from '../../components'
 
 export default {

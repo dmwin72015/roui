@@ -20,7 +20,7 @@ if (process.env.ANALYZE === 'true') {
 
 module.exports = {
   entry: {
-    rouui: path.join(__dirname, 'src')
+    rouui: path.join(__dirname, 'components')
   },
   output: {
     path: path.join(__dirname, 'dist'),

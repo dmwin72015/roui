@@ -17,5 +17,5 @@
       "@comp": ["./components"]
     }
   },
-  "include": ["./src/**/*.ts", "./src/**/*.tsx", "./components/**/*.tsx", "./components/**/*.ts"]
+  "include": ["./components/**/*.tsx", "./components/**/*.ts"]
 }

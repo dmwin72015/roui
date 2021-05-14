@@ -1,0 +1,52 @@
+/* common */
+$namespace: rou;
+
+/* color */
+// primary
+$primary-color: #3366ff;
+$primary-md-color: #a5affb;
+$primary-lt-color: #e5e7fa;
+
+// success
+$succ-color: #47b881;
+$succ-md-color: #7ddfc3;
+$succ-lt-color: #d5f2ea;
+
+// warn
+$warn-color: #ffcf5c;
+$warn-md-color: #dde29d;
+$warn-lt-color: #ddd8e7;
+
+// danger
+$dager-color: #ff0033;
+$dager-md-color: #7ddfc3;
+$dager-lt-color: #d5f2ea;
+
+/* radius */
+$radius: 3px;
+
+/* button */
+$btn-radius: $radius;
+$btn-padding: 4px 15px;
+$btn-height: 22 / 14;
+
+$btn-lg-padding: 6.5px 18px;
+
+/* 宽高尺寸 */
+$global-control-height: 32px;
+
+/* form */
+
+$form-radius: 3px;
+
+// font
+$font-family-base: Apple-System, Arial, Helvetica, 'PingFang SC', 'Hiragino Sans GB',
+  'Microsoft YaHei', STXihei, sans-serif;
+
+$font-size-large: 16px;
+$font-size-base: 14px;
+$font-size-small: 12px;
+$font-size-extra-small: 12px;
+
+// keyframes
+$form-error-message-translate-distance: 2px;

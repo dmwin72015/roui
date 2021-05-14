@@ -1,5 +1,5 @@
 import React from 'react'
-import './button.css'
+import PropTypes from 'prop-types'
 
 export interface ButtonProps {
   /**
@@ -46,3 +46,13 @@ export const Button: React.FC<ButtonProps> = ({
     </button>
   )
 }
+
+Button.propTypes = {
+  primary: PropTypes.bool,
+  backgroundColor: PropTypes.string,
+  size: PropTypes.oneOf(['small', 'medium', 'large']),
+  label: PropTypes.string,
+  onClick: PropTypes.func
+}
+
+Button.displayName = 'Button'
