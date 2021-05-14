@@ -15,6 +15,7 @@
     "lint:style": "stylelint  \"src/**/*.scss\"",
     "lint:ts": "eslint --ext tsx --ext ts src && tsc --noEmit",
     "lint:js": "eslint --ext js src",
+    "lint": "yarn lint:ts && yarn lint:js && yarn lint:style",
     "storybook": "start-storybook -p 9001",
     "build-storybook": "build-storybook"
   },
@@ -25,10 +26,10 @@
     "ui-component"
   ],
   "license": "MIT",
-  "author": "Dm Win7",
+  "author": "dmwin72015",
   "repository": {
     "type": "git",
-    "url": ""
+    "url": "git@github.com:dmwin72015/roui.git"
   },
   "browserslist": [
     "> 0.1%",
@@ -37,7 +38,8 @@
   ],
   "husky": {
     "hooks": {
-      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS"
+      "commit-msg": "commitlint -E HUSKY_GIT_PARAMS",
+      "pre-commit": "lint"
     }
   },
   "dependencies": {
