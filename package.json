@@ -1,6 +1,6 @@
 {
-  "name": "rouui",
-  "version": "0.0.1",
+  "name": "rc-roui",
+  "version": "0.0.2",
   "description": "rouui 是一个学习组件库",
   "main": "lib/index.js",
   "typings": "es/index.d.ts",
