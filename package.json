@@ -1,6 +1,6 @@
 {
   "name": "rc-roui",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "一个学习react组件库",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -11,7 +11,8 @@
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "clean": "rimraf dist",
-    "build": "npm run clean && rollup -c",
+    "build": "npm run clean && rollup -c && npm publish",
+    "dev": "rollup -c",
     "start": "start-storybook -p 6006",
     "build-storybook": "build-storybook"
   },
@@ -49,6 +50,7 @@
     "rollup-plugin-peer-deps-external": "^2.2.4",
     "rollup-plugin-postcss": "^4.0.1",
     "rollup-plugin-terser": "^7.0.2",
+    "rollup-plugin-visualizer": "^5.5.2",
     "sass": "^1.45.0",
     "sass-loader": "^12.4.0",
     "style-loader": "^3.3.1",

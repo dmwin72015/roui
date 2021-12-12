@@ -6,7 +6,7 @@ import external from 'rollup-plugin-peer-deps-external';
 import postcss from 'rollup-plugin-postcss';
 import dts from 'rollup-plugin-dts';
 import { babel } from '@rollup/plugin-babel';
-
+import { visualizer } from 'rollup-plugin-visualizer';
 const pkg = require('./package.json');
 
 export default [
@@ -42,6 +42,9 @@ export default [
         ],
       }),
       terser(),
+      visualizer({
+        filename: './dist/stats.html',
+      }),
     ],
   },
   {

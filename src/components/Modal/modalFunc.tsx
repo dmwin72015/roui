@@ -84,7 +84,6 @@ function ModaleFunction(this: any, config: ModalFuncProps) {
     };
 
     window.setTimeout(() => {
-      console.log('render', rest);
       ReactDOM.render(
         <Modal onClose={onClose} {...rest}>
           <div>{content}</div>

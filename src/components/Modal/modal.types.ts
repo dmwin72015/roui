@@ -1,5 +1,4 @@
 import { ReactNode } from 'react';
-
 interface BaseProps {
   open?: boolean;
   title?: string;
@@ -15,8 +14,6 @@ interface BaseProps {
   onClose?: () => void;
 }
 
-export type HandleAction = (...args: any[]) => any | PromiseLike<any>;
-
 export interface ModalProps extends BaseProps {
   onOpenChange?: (open: boolean) => void;
   forceMount?: true | undefined;
@@ -30,3 +27,5 @@ export interface ModalFuncProps extends BaseProps {
   onOk?: HandleAction;
   onCancel?: HandleAction;
 }
+
+export type HandleAction = (...args: any[]) => any | PromiseLike<any>;
