@@ -1,0 +1,33 @@
+//  scroll bar
+%scroll-bar {
+  &::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+  }
+
+  &::-webkit-scrollbar-track {
+    background: transparent;
+  }
+
+  &::-webkit-scrollbar-corner {
+    background-color: transparent;
+  }
+
+  &::-webkit-scrollbar-thumb {
+    border-radius: 6px;
+    background: rgba(46, 50, 56, 0.13);
+  }
+
+  &::-webkit-scrollbar-thumb:hover {
+    background: rgba(46, 50, 56, 0.23);
+  }
+}
+
+// fixed mask
+%fixed-full-page {
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+}

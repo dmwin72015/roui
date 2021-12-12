@@ -1,0 +1,98 @@
+@import '../../style/variable.scss';
+@import '../../style/placeholder.scss';
+@import '../../style/keyframes.scss';
+
+%motion {
+  @media (prefers-reduced-motion: no-preference) {
+    animation-duration: 180ms;
+    // animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    animation-timing-function: ease-in-out;
+    will-change: opacity;
+  }
+}
+
+$modal-prefix: $ui-prefix + -modal;
+
+.#{$modal-prefix} {
+  &-mask {
+    @extend %fixed-full-page;
+    @extend %motion;
+    background-color: rgba(0, 0, 0, 0.45);
+
+    &[data-state='open'] {
+      animation-name: fadeIn;
+    }
+    &[data-state='closed'] {
+      animation-name: fadeOut;
+    }
+  }
+
+  &-wrapper {
+    @extend %fixed-full-page;
+    overflow: auto;
+    z-index: 1000;
+    -webkit-overflow-scrolling: touch;
+    outline: 0;
+    @extend %motion;
+    @extend %scroll-bar;
+    @media (prefers-reduced-motion: no-preference) {
+      will-change: opacity;
+    }
+
+    &[data-state='open'] {
+      animation-name: fakeFadeIn;
+      .#{$modal-prefix}-content {
+        animation-name: zoomIn;
+      }
+    }
+    &[data-state='closed'] {
+      animation-name: fakeFadeOut;
+      .#{$modal-prefix}-content {
+        animation-name: zoomOut;
+      }
+    }
+  }
+
+  &-title {
+    font-size: 18px;
+    line-height: 24px;
+    margin-bottom: 18px;
+  }
+
+  &-content {
+    position: relative;
+    background-color: #fff;
+    border-radius: 6px;
+    box-shadow: hsl(206 22% 7% / 35%) 0px 10px 38px -10px, hsl(206 22% 7% / 20%) 0px 10px 20px -15px;
+    width: 30vw;
+    margin: 10vh auto;
+    padding: 18px;
+
+    &:focus {
+      outline: none;
+    }
+    @extend %motion;
+  }
+
+  &-scroll {
+    overflow: auto;
+  }
+
+  &-close {
+    font-size: 14px;
+    background-color: #fff;
+    padding: 5px;
+    position: absolute;
+    top: 10px;
+    right: 10px;
+    line-height: 0;
+    border-radius: 3px;
+    cursor: pointer;
+    color: #666;
+    transition: all 200ms;
+    &:hover {
+      color: #222;
+      background-color: #f2f2f2;
+    }
+  }
+}
