@@ -19,7 +19,8 @@ Modal.destroyAll = function destroyAllFn() {
   }
 };
 
+Modal.confirm = modalFunc;
+
 export default Modal;
 
 export { ModalProps, ModalFuncProps } from './modal.types';
-export { default as confirm } from './modalFunc';
