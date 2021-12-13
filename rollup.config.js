@@ -50,7 +50,7 @@ export default [
   {
     input: 'dist/esm/types/index.d.ts',
     output: [{ file: 'dist/index.d.ts', format: 'esm' }],
-    external: [/\.css|scss$/],
+    external: [/\.css|scss$/, /\.stories.tsx$/],
     plugins: [dts()],
   },
 ];

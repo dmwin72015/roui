@@ -16,6 +16,7 @@ $modal-prefix: $ui-prefix + -modal;
   &-mask {
     @extend %fixed-full-page;
     @extend %motion;
+    z-index: 1000;
     background-color: rgba(0, 0, 0, 0.45);
 
     &[data-state='open'] {
@@ -29,7 +30,7 @@ $modal-prefix: $ui-prefix + -modal;
   &-wrapper {
     @extend %fixed-full-page;
     overflow: auto;
-    z-index: 1000;
+    z-index: 1001;
     -webkit-overflow-scrolling: touch;
     outline: 0;
     @extend %motion;
