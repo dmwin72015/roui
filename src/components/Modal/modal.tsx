@@ -1,7 +1,7 @@
 import React, { FC, useRef, useEffect, ReactNode } from 'react';
 import cls from 'classnames';
 import * as Dialog from '@radix-ui/react-dialog';
-// import CloseIcon from '../svgIcon/close';
+import { CloseIcon } from '../icons';
 import { ModalProps } from './modal.types';
 
 const Modal: FC<ModalProps> = (props) => {
@@ -19,6 +19,7 @@ const Modal: FC<ModalProps> = (props) => {
     closeOnEsc,
     closeOnOverlay,
     onClosed,
+    showMask,
   } = props;
   const contentRef = useRef<HTMLDivElement>(null);
 
@@ -53,7 +54,7 @@ const Modal: FC<ModalProps> = (props) => {
   return (
     <Dialog.Root open={open} onOpenChange={onOpenChange}>
       <Dialog.Portal>
-        <Dialog.Overlay className={cls('rou-modal-mask', overlayClassName)} />
+        {showMask && <Dialog.Overlay className={cls('rou-modal-mask', overlayClassName)} />}
         <Dialog.Content {...contentProps}>
           <div className="rou-modal-wrapper" onClick={handleClickOutside}>
             <div
@@ -67,7 +68,7 @@ const Modal: FC<ModalProps> = (props) => {
               {description && <Dialog.Description className="rou-modal-desc">{description}</Dialog.Description>}
               {showClose && (
                 <Dialog.Close className="rou-modal-close" onClick={handleClose}>
-                  {/* <CloseIcon /> */}X
+                  <CloseIcon />
                 </Dialog.Close>
               )}
               {props.children}
@@ -86,6 +87,7 @@ Modal.defaultProps = {
   showClose: true,
   closeOnEsc: true,
   closeOnOverlay: true,
+  showMask: true,
 };
 
 export default Modal;

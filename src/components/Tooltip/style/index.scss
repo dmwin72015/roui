@@ -1,0 +1,41 @@
+@import '../../style/variable.scss';
+@import '../../style/placeholder.scss';
+@import '../../style/keyframes.scss';
+
+%motion {
+  @media (prefers-reduced-motion: no-preference) {
+    animation-duration: 180ms;
+    // animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+    animation-timing-function: ease-in-out;
+    will-change: opacity;
+  }
+}
+
+$modal-prefix: $ui-prefix + -tooltip;
+$tooltip-color: rgba(#000000, 0.75);
+
+.#{$modal-prefix} {
+  @extend %motion;
+  &[data-state='instant-open'] {
+    animation-name: fadeIn;
+  }
+  &[data-state='closed'] {
+    animation-name: fadeOut;
+  }
+  position: relative;
+  font-size: 12px;
+  max-width: 250px;
+
+  &-content {
+    padding: 6px 8px;
+    color: #fff;
+    background-color: $tooltip-color;
+    border-radius: $base-radius;
+    word-wrap: break-word;
+    box-shadow: 0 3px 6px -4px rgb(0 0 0 / 12%), 0 6px 16px 0 rgb(0 0 0 / 8%), 0 9px 28px 8px rgb(0 0 0 / 5%);
+  }
+
+  &-arrow {
+    fill: $tooltip-color;
+  }
+}

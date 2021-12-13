@@ -1,0 +1,45 @@
+@import '../../style/variable.scss';
+@import '../../style/placeholder.scss';
+@import '../../style/keyframes.scss';
+
+%motion {
+  @media (prefers-reduced-motion: no-preference) {
+    animation-duration: 180ms;
+    animation-timing-function: ease-in-out;
+    will-change: opacity;
+  }
+}
+
+$prefix: $ui-prefix + -message;
+
+.#{$prefix} {
+  // message
+  position: fixed;
+  top: 12px;
+  left: 0;
+  width: 100%;
+  z-index: 2147483647;
+  font-variant: tabular-nums;
+  pointer-events: none;
+
+  &-success .rou-notice-icon {
+    color: $success-color;
+  }
+  &-error .rou-notice-icon {
+    color: $error-color;
+  }
+  &-info .rou-notice-icon {
+    color: $primary-color;
+  }
+  &-warning .rou-notice-icon {
+    color: $warn-color;
+  }
+
+  .rou-notice-icon {
+    position: relative;
+    top: 1px;
+    font-size: 16px;
+    vertical-align: -0.125em;
+    margin-right: 4px;
+  }
+}

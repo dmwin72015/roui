@@ -1,11 +1,13 @@
 import { useState } from 'react';
 import Modal from '../index';
+import './demo.scss';
 
 export default {
   title: 'Modal',
+  Component: Modal,
 };
 
-export const Default = () => {
+export const Basic = () => {
   const [show, setShow] = useState(false);
   const handleToggle = () => setShow(!show);
 
@@ -17,6 +19,10 @@ export const Default = () => {
       </Modal>
     </div>
   );
+};
+
+Basic.args = {
+  open: false,
 };
 
 export const WithFunc = () => {
