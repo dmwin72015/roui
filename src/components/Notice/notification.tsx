@@ -32,13 +32,14 @@ export interface NotificationInstance {
 }
 
 export interface NotificationProps {
-  noticeType?: string;
+  prefix?: string;
   className?: string;
   style?: React.CSSProperties;
   transitionName?: string;
   animation?: string | object;
   maxCount?: number;
   closeIcon?: React.ReactNode;
+  animationDuration?: number;
 }
 
 // 消息
@@ -46,7 +47,7 @@ export default class Notification extends React.Component<NotificationProps, Not
   static defaultDuration = 1.5;
 
   static newInstance: (
-    properties: { getContainer?: () => HTMLElement; noticeType: string },
+    properties: NotificationProps & { getContainer?: () => HTMLElement },
     callback: (instance: NotificationInstance) => void,
   ) => void;
 
@@ -97,12 +98,13 @@ export default class Notification extends React.Component<NotificationProps, Not
   componentWillUnmount() {}
 
   render() {
-    let { notices, animationDuration } = this.state;
-    const { noticeType } = this.props;
+    let { notices } = this.state;
+    const { transitionName, animationDuration } = this.props;
+    const motionTime = animationDuration || this.state.animationDuration;
     return (
-      <TransitionGroup className={`rou-${noticeType}-list`}>
+      <TransitionGroup>
         {notices.map((item) => (
-          <CSSTransition key={item.key} timeout={animationDuration} classNames={`slide-down`}>
+          <CSSTransition key={item.key} timeout={motionTime} classNames={transitionName}>
             <Notice {...item} />
           </CSSTransition>
         ))}
@@ -111,7 +113,7 @@ export default class Notification extends React.Component<NotificationProps, Not
   }
 }
 
-Notification.newInstance = function newNoticeInstance(options, cb) {
+Notification.newInstance = function newNoticeInstance(options: NotificationProps, cb) {
   let div = document.createElement('div');
   let called = false;
 
@@ -120,7 +122,6 @@ Notification.newInstance = function newNoticeInstance(options, cb) {
       return;
     }
     called = true;
-
     cb({
       notice(props) {
         notice.add(props);
@@ -140,7 +141,7 @@ Notification.newInstance = function newNoticeInstance(options, cb) {
 
   let component = React.createElement(Notification, { ...options, ref });
 
-  div.className = `rou-${options.noticeType}`;
+  div.className = `rou-${options.prefix}`;
   ReactDOM.render(component, div);
   document.body.appendChild(div);
 };

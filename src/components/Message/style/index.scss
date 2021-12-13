@@ -1,14 +1,4 @@
 @import '../../style/variable.scss';
-@import '../../style/placeholder.scss';
-@import '../../style/keyframes.scss';
-
-%motion {
-  @media (prefers-reduced-motion: no-preference) {
-    animation-duration: 180ms;
-    animation-timing-function: ease-in-out;
-    will-change: opacity;
-  }
-}
 
 $prefix: $ui-prefix + -message;
 
@@ -22,24 +12,61 @@ $prefix: $ui-prefix + -message;
   font-variant: tabular-nums;
   pointer-events: none;
 
-  &-success .rou-notice-icon {
+  &-success &-icon {
     color: $success-color;
   }
-  &-error .rou-notice-icon {
+  &-error &-icon {
     color: $error-color;
   }
-  &-info .rou-notice-icon {
+  &-info &-icon {
     color: $primary-color;
   }
-  &-warning .rou-notice-icon {
+  &-warning &-icon {
     color: $warn-color;
   }
 
-  .rou-notice-icon {
+  .rou-notice-content {
+    padding: 8px 16px;
+  }
+  &-icon {
     position: relative;
-    top: 1px;
     font-size: 16px;
     vertical-align: -0.125em;
     margin-right: 4px;
   }
+
+  &-close {
+    display: inline-block;
+    vertical-align: -0.125em;
+    line-height: 0;
+    margin-left: 12px;
+    font-size: 13px;
+    padding: 3px;
+    cursor: pointer;
+    &:hover {
+      color: #333;
+    }
+  }
+}
+
+// 动画
+.slide-in-enter {
+  opacity: 0;
+  transform: translateY(-10px);
+}
+
+.slide-in-enter-active {
+  opacity: 1;
+  transform: translateY(0);
+  transition: transform 200ms ease-in, opacity 200ms ease-in;
+}
+
+.slide-in-exit {
+  opacity: 1;
+  transform: translateY(0);
+}
+.slide-in-exit-active {
+  opacity: 0;
+  transform: translateY(-10px);
+  transition: transform 200ms ease-in, opacity 200ms ease-in;
 }

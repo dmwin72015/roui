@@ -1,7 +1,9 @@
 import { ReactNode } from 'react';
 import Notification, { NotificationInstance } from '../Notice/notification';
 import { NoticeProps } from '../Notice';
+import MessageOrign, { MessageProps } from './message';
 import './style/index.scss';
+import cls from 'classnames';
 
 type MessageContent = ReactNode;
 
@@ -19,17 +21,30 @@ let msgInstance: NotificationInstance | null;
 
 let Message: any = {
   name: 'Message',
-  config(options: ConfigOptions) {},
-  open: (props: NoticeProps) => {
-    const _props = Object.assign({}, props, { className: `rou-message-${props.type || 'info'}` });
+  // TODO:config
+  // config(options: ConfigOptions) {},
+  open: (props: MessageProps & NoticeProps) => {
+    const _props = Object.assign({}, props, {
+      className: cls('rou-message-content', {
+        [`rou-message-${props.type}`]: props.type,
+      }),
+      closeClassName: 'rou-message-close',
+      content: <MessageOrign {...props} />,
+    });
     if (msgInstance) {
       msgInstance.notice(_props);
       return;
     }
-    Notification.newInstance({ noticeType: 'message' }, (instance) => {
-      msgInstance = instance;
-      instance.notice(_props);
-    });
+    Notification.newInstance(
+      {
+        prefix: 'message',
+        transitionName: 'slide-in',
+      },
+      (instance) => {
+        msgInstance = instance;
+        instance.notice(_props);
+      },
+    );
   },
   destroy() {
     if (msgInstance) {
@@ -51,8 +66,8 @@ export interface MessageInstance {
   success(content: MessageContent, duration?: number, onClose?: () => void): void;
   error(content: MessageContent, duration?: number, onClose?: () => void): void;
   warning(content: MessageContent, duration?: number, onClose?: () => void): void;
-  config(option?: NoticeProps): void;
-  show(props: NoticeProps): void;
+  // config(option?: NoticeProps): void;
+  show(props: MessageProps & NoticeProps): void;
   destroy: () => void;
 }
 
