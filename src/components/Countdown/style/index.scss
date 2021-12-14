@@ -1,0 +1,26 @@
+@import '../../style/variable.scss';
+.countdown {
+  position: relative;
+  color: $primary-color;
+  cursor: pointer;
+  user-select: none;
+}
+
+.count-disbaled {
+  pointer-events: none;
+  opacity: 0.8;
+  color: #666;
+  cursor: not-allowed;
+}
+
+.count-loading {
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  margin: auto;
+  text-align: center;
+  color: $primary-color;
+  background-color: rgba(#fff, 0.8);
+}

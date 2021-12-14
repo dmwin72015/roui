@@ -1,4 +1,5 @@
 @import '../../style/variable.scss';
+@import '../../style/keyframes.scss';
 
 $prefix: $ui-prefix + -message;
 
@@ -50,23 +51,33 @@ $prefix: $ui-prefix + -message;
 }
 
 // 动画
-.slide-in-enter {
-  opacity: 0;
-  transform: translateY(-10px);
+$duration: 0.25s;
+
+.rou-message-enter-active {
+  animation: msgSlideUpIn $duration ease-in-out;
 }
 
-.slide-in-enter-active {
-  opacity: 1;
-  transform: translateY(0);
-  transition: transform 200ms ease-in, opacity 200ms ease-in;
+.rou-message-exit-active {
+  animation: msgSlideUpOut $duration ease-in-out;
 }
 
-.slide-in-exit {
-  opacity: 1;
-  transform: translateY(0);
+@keyframes msgSlideUpIn {
+  0% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
 }
-.slide-in-exit-active {
-  opacity: 0;
-  transform: translateY(-10px);
-  transition: transform 200ms ease-in, opacity 200ms ease-in;
+@keyframes msgSlideUpOut {
+  0% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+  100% {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
 }

@@ -1,4 +1,5 @@
 import React from 'react';
+import cls from 'classnames';
 import Notice, { NoticeProps } from './notice';
 import { CSSTransition, TransitionGroup } from 'react-transition-group';
 import ReactDOM from 'react-dom';

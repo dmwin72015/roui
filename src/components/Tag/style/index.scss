@@ -1,0 +1,15 @@
+@import '../../style/variable.scss';
+
+$prefix: $ui-prefix + -tag;
+.#{$prefix} {
+  display: flex;
+  align-items: center;
+  padding: 3px 6px;
+  font-size: 12px;
+  line-height: 16px;
+  border-radius: 3px;
+  &-default {
+    background-color: #e8f3ff;
+    color: $primary-color;
+  }
+}

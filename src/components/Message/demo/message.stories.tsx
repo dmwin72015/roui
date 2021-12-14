@@ -18,6 +18,21 @@ export const Basic = () => {
     });
   };
 
+  const delay = (time: number, val: any) => {
+    return new Promise((resolve) => {
+      window.setTimeout(() => {
+        resolve(val);
+      }, time);
+    });
+  };
+
+  const handleTestTimeout = () => {
+    window.setTimeout(() => {}, 10);
+    delay(2000, 'test').then((val) => {
+      Message.success('kkk -- vvv');
+    });
+  };
+
   return (
     <div>
       <button onClick={() => handleToggle('info')}>info message</button>
@@ -28,11 +43,18 @@ export const Basic = () => {
       <div>
         <button onClick={() => setVisible(!visible)}>show modal</button>
       </div>
+
+      <div>
+        <button onClick={handleTestTimeout}>测试 timeout</button>
+      </div>
+
       <Modal open={visible} onClose={() => setVisible(false)}>
         modal
         <button
           onClick={() => {
-            Message.info('没你好啊');
+            delay(100, '没你好啊').then((res: any) => {
+              Message.info(res, 3);
+            });
           }}
         >
           内部message

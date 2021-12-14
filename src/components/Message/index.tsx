@@ -38,7 +38,7 @@ let Message: any = {
     Notification.newInstance(
       {
         prefix: 'message',
-        transitionName: 'slide-in',
+        transitionName: 'rou-message',
       },
       (instance) => {
         msgInstance = instance;
