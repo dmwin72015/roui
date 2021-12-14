@@ -1,0 +1,67 @@
+@import '../../style/variable.scss';
+
+$prefix: $ui-prefix + -btn;
+
+.#{$prefix} {
+  position: relative;
+  border-radius: 4px;
+  cursor: pointer;
+  margin: 0;
+  white-space: nowrap;
+  padding: 8px 12px;
+  border: none;
+
+  &[disabled] {
+    cursor: not-allowed;
+  }
+
+  // primary button
+  &-primary {
+    color: #fff;
+    background-color: $primary-color;
+    border: 1px solid $primary-color;
+    background-clip: padding-box;
+    &[disabled] {
+      color: #fff;
+      border-color: #a9bbff;
+      background-color: #a9bbff;
+    }
+    &:not([disabled]):hover {
+      background: lighten($primary-color, 8%);
+      border: 1px solid lighten($primary-color, 8%);
+    }
+
+    &:not([disabled]):active {
+      background: darken($primary-color, 8%);
+      border: 1px solid darken($primary-color, 8%);
+    }
+  }
+
+  //
+  &-plain {
+    color: $primary-color;
+    background: #fff;
+    border: 1px solid $primary-color;
+
+    &:hover {
+      color: lighten($primary-color, 8%);
+      border: 1px solid lighten($primary-color, 8%);
+    }
+
+    &:active {
+      color: darken($primary-color, 8%);
+      border: 1px solid darken($primary-color, 8%);
+    }
+
+    &.#{$prefix}-loading::after {
+      background-color: $primary-color;
+    }
+  }
+
+  &-small {
+    padding: 5px 16px;
+  }
+
+  &-loading {
+  }
+}
