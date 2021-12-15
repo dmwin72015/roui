@@ -46,7 +46,7 @@ const IPopover: React.FC<PopoverProps> = (props) => {
   }
 
   return (
-    <Popover.Root open={open} onOpenChange={onOpenChangeHandler}>
+    <Popover.Root open={show} onOpenChange={onOpenChangeHandler}>
       <Popover.Trigger asChild {..._triggerProps}>
         {props.children}
       </Popover.Trigger>
