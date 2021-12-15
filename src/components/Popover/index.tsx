@@ -11,6 +11,7 @@ export interface PopoverProps {
   sideOffset?: number;
   trigger?: 'click' | 'hover';
   side?: 'left' | 'top' | 'right' | 'bottom';
+  align?: 'start' | 'center' | 'end';
   className?: string;
 }
 
@@ -45,8 +46,11 @@ const IPopover: React.FC<PopoverProps> = (props) => {
     _contentProps.onMouseLeave = handleLeave;
   }
 
+  const _contentStyle: any = {
+    '--custom-side-offset': `${sideOffset}px`,
+  };
   return (
-    <Popover.Root open={show} onOpenChange={onOpenChangeHandler}>
+    <Popover.Root open={true} onOpenChange={onOpenChangeHandler}>
       <Popover.Trigger asChild {..._triggerProps}>
         {props.children}
       </Popover.Trigger>
@@ -54,11 +58,13 @@ const IPopover: React.FC<PopoverProps> = (props) => {
         className={cls('rou-popover', className)}
         {...rest}
         {..._contentProps}
+        style={_contentStyle}
         sideOffset={0}
         data-offset={sideOffset}
+        data-arrow={showArrow}
       >
         <div className="rou-popover-content">{content}</div>
-        {showArrow && <Popover.Arrow className="rou-popover-arrow" />}
+        {showArrow && <Popover.Arrow offset={5} className="rou-popover-arrow" />}
       </Popover.Content>
     </Popover.Root>
   );

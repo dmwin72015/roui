@@ -11,7 +11,10 @@ const Template: ComponentStory<typeof Popover> = (args) => {
   return (
     <div style={{ padding: 40 }}>
       <Popover {...args}>
-        <span className="tag">hi</span>
+        <a className="fx-ac" style={{ background: 'red' }}>
+          <i className="b2font b2-add-circle-line"></i>
+          <span>发布</span>
+        </a>
       </Popover>
     </div>
   );
@@ -20,8 +23,22 @@ const Template: ComponentStory<typeof Popover> = (args) => {
 export const Basic = Template.bind({});
 
 Basic.args = {
-  content: <span>弹出8u内容</span>,
-  showArrow: false,
+  open: true,
+  content: (
+    <ul style={{ margin: 0 }}>
+      <li>
+        <a href="/post" className="fx-ac">
+          <span style={{ paddingLeft: 3 }}>发话题</span>
+        </a>
+      </li>
+      <li>
+        <a className="fx-ac" href="/post/article">
+          <span style={{ paddingLeft: 6 }}>发文章</span>
+        </a>
+      </li>
+    </ul>
+  ),
+  showArrow: true,
   sideOffset: 6,
   trigger: 'hover',
   side: 'bottom',

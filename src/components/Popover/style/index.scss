@@ -23,35 +23,49 @@ $prefix: $ui-prefix + -popover;
   position: relative;
   outline: none;
 
-  // TODO: 动态设置
-  &[data-side='top'] {
-    padding-bottom: 10px;
+  $offset: var(--custom-side-offset);
+  $content-pd: calc(100% - $offset) !important;
+  $arrow-h: 5px;
 
+  &[data-side='top'] {
+    padding-bottom: $offset;
     .#{$prefix}-content + span {
-      top: calc(100% - 10px) !important;
+      top: $content-pd;
+    }
+    &[data-arrow='true'] {
+      margin-bottom: -$arrow-h;
     }
   }
+
   &[data-side='right'] {
-    padding-left: 10px;
+    padding-left: $offset;
     .#{$prefix}-content + span {
-      right: calc(100% - 10px) !important;
+      right: $content-pd;
+    }
+    &[data-arrow='true'] {
+      margin-left: -$arrow-h;
     }
   }
   &[data-side='bottom'] {
-    padding-top: 10px;
+    padding-top: $offset;
     .#{$prefix}-content + span {
-      bottom: calc(100% - 10px) !important;
+      bottom: $content-pd;
+    }
+    &[data-arrow='true'] {
+      margin-top: -$arrow-h;
     }
   }
   &[data-side='left'] {
     padding-right: 10px;
     .#{$prefix}-content + span {
-      right: calc(100% - 10px) !important;
+      right: $content-pd;
+    }
+    &[data-arrow='true'] {
+      margin-right: -$arrow-h;
     }
   }
 
   &-content {
-    padding: 6px 8px;
     background-color: #fff;
     border-radius: $base-radius;
     word-wrap: break-word;
