@@ -1,6 +1,5 @@
 import OriginModal from './modal';
 import modalFunc, { destroyFns, ModalStaticFunctions } from './modalFunc';
-import './style/index.scss';
 
 type ModalType = typeof OriginModal &
   ModalStaticFunctions & {

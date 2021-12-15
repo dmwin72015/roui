@@ -5,16 +5,15 @@
 %motion {
   @media (prefers-reduced-motion: no-preference) {
     animation-duration: 180ms;
-    // animation-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
     animation-timing-function: ease-in-out;
     will-change: opacity;
   }
 }
-$modal-prefix: $ui-prefix + -popover;
+$prefix: $ui-prefix + -popover;
 
-.#{$modal-prefix} {
+.#{$prefix} {
   @extend %motion;
-  transform-origin: top center;
+  transform-origin: var(--radix-popover-content-transform-origin);
   &[data-state='open'] {
     animation-name: zoomIn;
   }
@@ -22,9 +21,35 @@ $modal-prefix: $ui-prefix + -popover;
     animation-name: zoomOut;
   }
   position: relative;
-  font-size: 12px;
-  max-width: 250px;
   outline: none;
+
+  // TODO: 动态设置
+  &[data-side='top'] {
+    padding-bottom: 10px;
+
+    .#{$prefix}-content + span {
+      top: calc(100% - 10px) !important;
+    }
+  }
+  &[data-side='right'] {
+    padding-left: 10px;
+    .#{$prefix}-content + span {
+      right: calc(100% - 10px) !important;
+    }
+  }
+  &[data-side='bottom'] {
+    padding-top: 10px;
+    .#{$prefix}-content + span {
+      bottom: calc(100% - 10px) !important;
+    }
+  }
+  &[data-side='left'] {
+    padding-right: 10px;
+    .#{$prefix}-content + span {
+      right: calc(100% - 10px) !important;
+    }
+  }
+
   &-content {
     padding: 6px 8px;
     background-color: #fff;

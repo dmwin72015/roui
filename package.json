@@ -1,6 +1,6 @@
 {
   "name": "rc-roui",
-  "version": "1.0.8",
+  "version": "1.0.9",
   "description": "一个学习react组件库",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
@@ -51,6 +51,7 @@
     "husky": "^7.0.4",
     "lint-staged": "^12.1.2",
     "postcss": "^8.4.4",
+    "postcss-discard-duplicates": "^5.0.1",
     "react": "^17.0.2",
     "rimraf": "^3.0.2",
     "rollup": "^2.56.2",

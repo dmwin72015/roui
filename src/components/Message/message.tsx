@@ -1,5 +1,6 @@
 import React from 'react';
 import { SuccessIcon, WarnIcon, ErrorIcon, InfoIcon } from '../icons';
+import './style/index.scss';
 
 export type MessageType = 'success' | 'error' | 'info' | 'warning';
 

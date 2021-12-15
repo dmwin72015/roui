@@ -2,7 +2,6 @@ import { ReactNode } from 'react';
 import Notification, { NotificationInstance } from '../Notice/notification';
 import { NoticeProps } from '../Notice';
 import MessageOrign, { MessageProps } from './message';
-import './style/index.scss';
 import cls from 'classnames';
 
 type MessageContent = ReactNode;

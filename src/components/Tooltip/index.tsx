@@ -1,4 +1,5 @@
 import React, { FC } from 'react';
+import cls from 'classnames';
 import * as TooltipPrimitive from '@radix-ui/react-tooltip';
 import './style/index.scss';
 
@@ -8,14 +9,15 @@ export interface TooltipProps {
   showArrow?: boolean;
   side?: 'top' | 'bottom' | 'left' | 'right';
   align?: 'start' | 'center' | 'end';
+  className?: string;
 }
 
 const Tooltip: FC<TooltipProps> = (props) => {
-  const { offset, content, showArrow, ...rest } = props;
+  const { offset, content, showArrow, className, ...rest } = props;
   return (
     <TooltipPrimitive.Root delayDuration={0}>
       <TooltipPrimitive.Trigger asChild>{props.children}</TooltipPrimitive.Trigger>
-      <TooltipPrimitive.Content {...rest} className="rou-tooltip" sideOffset={offset}>
+      <TooltipPrimitive.Content {...rest} className={cls('rou-tooltip', className)} sideOffset={offset}>
         <div className="rou-tooltip-content">{content}</div>
         {showArrow && <TooltipPrimitive.Arrow className="rou-tooltip-arrow" offset={5} />}
       </TooltipPrimitive.Content>

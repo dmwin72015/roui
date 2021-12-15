@@ -7,6 +7,7 @@ import postcss from 'rollup-plugin-postcss';
 import dts from 'rollup-plugin-dts';
 import { babel } from '@rollup/plugin-babel';
 import { visualizer } from 'rollup-plugin-visualizer';
+
 const pkg = require('./package.json');
 
 export default [
@@ -39,6 +40,7 @@ export default [
             overrideBrowserslist: ['last 2 version', '>1%', 'ios 7'],
           }),
           require('cssnano'),
+          require('postcss-discard-duplicates'),
         ],
       }),
       terser(),

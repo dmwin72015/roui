@@ -20,14 +20,16 @@ const Template: ComponentStory<typeof Popover> = (args) => {
 export const Basic = Template.bind({});
 
 Basic.args = {
-  content: <span>'提示信息'</span>,
-  showArrow: true,
+  content: <span>弹出8u内容</span>,
+  showArrow: false,
   sideOffset: 6,
+  trigger: 'hover',
+  side: 'bottom',
 };
 
 export const Controlled: ComponentStory<typeof Popover> = (args) => {
   const [show, setShow] = useState(false);
-  const onChange = (v) => {
+  const onChange = (v: boolean) => {
     setShow(v);
   };
   return (
@@ -39,7 +41,6 @@ export const Controlled: ComponentStory<typeof Popover> = (args) => {
       <Popover
         open={show}
         onOpenChange={(val) => {
-          console.log('船渡', val);
           setShow(val);
         }}
         {...args}
@@ -51,7 +52,8 @@ export const Controlled: ComponentStory<typeof Popover> = (args) => {
 };
 
 Controlled.args = {
-  content: <span>'提示信息'</span>,
+  content: <span>提示信息</span>,
   showArrow: true,
   sideOffset: 6,
+  side: 'bottom',
 };

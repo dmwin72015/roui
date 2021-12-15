@@ -1,8 +1,9 @@
-import React, { FC, useRef, useEffect, ReactNode } from 'react';
+import React, { FC, useRef } from 'react';
 import cls from 'classnames';
 import * as Dialog from '@radix-ui/react-dialog';
 import { CloseIcon } from '../icons';
 import { ModalProps } from './modal.types';
+import './style/index.scss';
 
 const Modal: FC<ModalProps> = (props) => {
   const {
@@ -45,7 +46,7 @@ const Modal: FC<ModalProps> = (props) => {
     }
   };
 
-  const motionEnd = (e: any) => {
+  const motionEnd = () => {
     if (!open) {
       onClosed?.();
     }
