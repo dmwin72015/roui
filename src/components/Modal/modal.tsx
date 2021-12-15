@@ -36,6 +36,7 @@ const Modal: FC<ModalProps> = (props) => {
     e.stopPropagation();
     onClose?.();
   };
+
   const handleClickOutside = (e: React.MouseEvent) => {
     const inContent = contentRef.current?.contains(e.target as HTMLElement);
     if (inContent) {
