@@ -1,6 +1,7 @@
 import { useState } from 'react';
 import { ComponentStory, ComponentMeta } from '@storybook/react';
 import Popover from '../index';
+import './demo.scss';
 
 export default {
   title: 'Popover',
@@ -8,9 +9,25 @@ export default {
 } as ComponentMeta<typeof Popover>;
 
 const Template: ComponentStory<typeof Popover> = (args) => {
+  const [open, setOpen] = useState(false);
+
+  const content = (
+    <ul style={{ margin: 0 }} className="menu-list">
+      <li onClick={() => setOpen(false)}>
+        <a className="fx-ac">
+          <span style={{ paddingLeft: 3 }}>发话题</span>
+        </a>
+      </li>
+      <li>
+        <a className="fx-ac">
+          <span style={{ paddingLeft: 6 }}>发文章</span>
+        </a>
+      </li>
+    </ul>
+  );
   return (
     <div style={{ padding: 40 }}>
-      <Popover {...args}>
+      <Popover open={open} {...args} content={content} onOpenChange={setOpen}>
         <a className="fx-ac" style={{ background: 'red' }}>
           <i className="b2font b2-add-circle-line"></i>
           <span>发布</span>
@@ -23,21 +40,6 @@ const Template: ComponentStory<typeof Popover> = (args) => {
 export const Basic = Template.bind({});
 
 Basic.args = {
-  open: true,
-  content: (
-    <ul style={{ margin: 0 }}>
-      <li>
-        <a href="/post" className="fx-ac">
-          <span style={{ paddingLeft: 3 }}>发话题</span>
-        </a>
-      </li>
-      <li>
-        <a className="fx-ac" href="/post/article">
-          <span style={{ paddingLeft: 6 }}>发文章</span>
-        </a>
-      </li>
-    </ul>
-  ),
   showArrow: true,
   sideOffset: 6,
   trigger: 'hover',

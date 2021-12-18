@@ -19,6 +19,7 @@ const IPopover: React.FC<PopoverProps> = (props) => {
   const { open, content, showArrow, onOpenChange, trigger, className, sideOffset, ...rest } = props;
   const [show, setShow] = useState(open);
 
+  console.log('IPopover', open);
   const onOpenChangeHandler = (_show: boolean) => {
     setShow(_show);
     onOpenChange?.(_show);
@@ -29,10 +30,12 @@ const IPopover: React.FC<PopoverProps> = (props) => {
   }, [open]);
 
   const handleEnter = () => {
+    onOpenChange?.(true);
     setShow(true);
   };
 
   const handleLeave = () => {
+    onOpenChange?.(false);
     setShow(false);
   };
 
@@ -50,7 +53,7 @@ const IPopover: React.FC<PopoverProps> = (props) => {
     '--custom-side-offset': `${sideOffset}px`,
   };
   return (
-    <Popover.Root open={true} onOpenChange={onOpenChangeHandler}>
+    <Popover.Root open={show} onOpenChange={onOpenChangeHandler}>
       <Popover.Trigger asChild {..._triggerProps}>
         {props.children}
       </Popover.Trigger>
