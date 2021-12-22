@@ -21,21 +21,9 @@ const Modal: FC<ModalProps> = (props) => {
     closeOnOverlay,
     onClosed,
     showMask,
+    wrapScroll,
   } = props;
   const contentRef = useRef<HTMLDivElement>(null);
-
-  const contentProps: Dialog.DialogContentProps = {
-    asChild: true,
-    forceMount,
-  };
-
-  if (closeOnEsc) {
-    contentProps.onEscapeKeyDown = onClose;
-  }
-  const handleClose = (e: React.MouseEvent) => {
-    e.stopPropagation();
-    onClose?.();
-  };
 
   const handleClickOutside = (e: React.MouseEvent) => {
     const inContent = contentRef.current?.contains(e.target as HTMLElement);
@@ -47,18 +35,42 @@ const Modal: FC<ModalProps> = (props) => {
     }
   };
 
+  const handleClose = (e: React.MouseEvent) => {
+    e.stopPropagation();
+    onClose?.();
+  };
+
   const motionEnd = () => {
     if (!open) {
       onClosed?.();
     }
   };
 
+  const contentProps: Dialog.DialogContentProps = {
+    asChild: true,
+    forceMount,
+  };
+
+  const wrapProps: React.HTMLAttributes<HTMLDivElement> = {
+    className: 'rou-modal-wrapper',
+    onClick: handleClickOutside,
+  };
+  if (wrapScroll) {
+    wrapProps.onWheel = (e) => {
+      e.stopPropagation();
+    };
+  }
+
+  if (closeOnEsc) {
+    contentProps.onEscapeKeyDown = onClose;
+  }
+
   return (
-    <Dialog.Root open={open} onOpenChange={onOpenChange}>
+    <Dialog.Root open={open} onOpenChange={onOpenChange} allowPinchZoom>
       <Dialog.Portal>
         {showMask && <Dialog.Overlay className={cls('rou-modal-mask', overlayClassName)} />}
         <Dialog.Content {...contentProps}>
-          <div className="rou-modal-wrapper" onClick={handleClickOutside}>
+          <div {...wrapProps}>
             <div
               className={cls('rou-modal-content', contentClassName, {
                 'rou-modal-scroll': allowScroll,
@@ -90,6 +102,7 @@ Modal.defaultProps = {
   closeOnEsc: true,
   closeOnOverlay: true,
   showMask: true,
+  wrapScroll: true,
 };
 
 export default Modal;

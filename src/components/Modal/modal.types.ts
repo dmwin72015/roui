@@ -13,6 +13,7 @@ interface BaseProps {
   onClosed?: () => void;
   onClose?: () => void;
   showMask?: boolean;
+  wrapScroll?: boolean;
 }
 
 export interface ModalProps extends BaseProps {

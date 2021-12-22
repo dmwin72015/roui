@@ -14,8 +14,13 @@ export const Basic = () => {
   return (
     <div>
       <button onClick={handleToggle}>显示弹框</button>
+      <div style={{ height: 1500 }}></div>
       <Modal open={show} onClose={handleToggle}>
-        弹框内哦那个
+        <p>弹框内哦那个</p>
+        <p>弹框内哦那个</p>
+        <p>弹框内哦那个</p>
+        <p>弹框内哦那个</p>
+        <p>弹框内哦那个</p>
       </Modal>
     </div>
   );

@@ -10,3 +10,5 @@ lib
 .eslintrc.js
 src/**/demo/**/*.ts
 src/**/demo/**/*.tsx
+src/**/demo/**/*.scss
+src/**/demo/**/*.css

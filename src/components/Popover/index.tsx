@@ -19,7 +19,6 @@ const IPopover: React.FC<PopoverProps> = (props) => {
   const { open, content, showArrow, onOpenChange, trigger, className, sideOffset, ...rest } = props;
   const [show, setShow] = useState(open);
 
-  console.log('IPopover', open);
   const onOpenChangeHandler = (_show: boolean) => {
     setShow(_show);
     onOpenChange?.(_show);

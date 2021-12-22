@@ -1,6 +1,6 @@
 {
   "name": "rc-roui",
-  "version": "1.0.13",
+  "version": "1.0.16",
   "description": "一个学习react组件库",
   "main": "dist/cjs/index.js",
   "module": "dist/esm/index.js",
