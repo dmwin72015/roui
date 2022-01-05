@@ -1,4 +1,5 @@
 @import '../../style/variable.scss';
+@import '../../style/mixin.scss';
 
 $prefix: $ui-prefix + -btn;
 
@@ -19,8 +20,8 @@ $prefix: $ui-prefix + -btn;
   &-primary {
     color: #fff;
     background-color: $primary-color;
-    border: 1px solid $primary-color;
     background-clip: padding-box;
+
     &[disabled] {
       color: #fff;
       border-color: #a9bbff;
@@ -28,21 +29,17 @@ $prefix: $ui-prefix + -btn;
     }
     &:not([disabled]):hover {
       background: lighten($primary-color, 8%);
-      border: 1px solid lighten($primary-color, 8%);
     }
-
     &:not([disabled]):active {
       background: darken($primary-color, 8%);
-      border: 1px solid darken($primary-color, 8%);
     }
   }
-
   //
   &-plain {
     color: $primary-color;
     background: #fff;
     border: 1px solid $primary-color;
-
+    padding: 7px 12px;
     &:hover {
       color: lighten($primary-color, 8%);
       border: 1px solid lighten($primary-color, 8%);
@@ -62,6 +59,19 @@ $prefix: $ui-prefix + -btn;
     padding: 5px 16px;
   }
 
-  &-loading {
+  &-loading-icon {
+    color: $primary-color;
+  }
+
+  &-loading-inner {
+    position: absolute;
+    left: 0;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    background-color: rgba(255, 255, 255, 0.6);
+    display: flex;
+    align-items: center;
+    justify-content: center;
   }
 }

@@ -1,4 +1,5 @@
 import { ComponentStory, ComponentMeta } from '@storybook/react';
+import { useState } from 'react';
 import Button from '../index';
 
 export default {
@@ -7,9 +8,17 @@ export default {
 } as ComponentMeta<typeof Button>;
 
 const Template: ComponentStory<typeof Button> = (args) => {
+  const [loading, setLoading] = useState<boolean>(false);
   return (
     <div style={{ padding: 40 }}>
-      <Button {...args}></Button>
+      <div>
+        <Button {...args}></Button>
+      </div>
+      <div>
+        <Button {...args} loading={loading} onClick={() => setLoading(!loading)}>
+          加载按钮
+        </Button>
+      </div>
     </div>
   );
 };
@@ -20,4 +29,5 @@ Basic.args = {
   type: 'primary',
   children: '按钮',
   size: 'small',
+  loading: false,
 };

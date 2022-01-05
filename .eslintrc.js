@@ -6,6 +6,7 @@ module.exports = {
   extends: [
     'eslint:recommended',
     'plugin:react/recommended',
+    'plugin:react/jsx-runtime',
     'plugin:@typescript-eslint/recommended',
     'plugin:storybook/recommended',
   ],
@@ -22,5 +23,10 @@ module.exports = {
     'react/react-in-jsx-scope': 'off',
     '@typescript-eslint/no-empty-function': 'off',
     'react/prop-types': 'off',
+  },
+  settings: {
+    react: {
+      version: 'detect',
+    },
   },
 };

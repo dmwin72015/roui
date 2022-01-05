@@ -13,10 +13,11 @@ export interface PopoverProps {
   side?: 'left' | 'top' | 'right' | 'bottom';
   align?: 'start' | 'center' | 'end';
   className?: string;
+  arrowOffset?: number;
 }
 
 const IPopover: React.FC<PopoverProps> = (props) => {
-  const { open, content, showArrow, onOpenChange, trigger, className, sideOffset, ...rest } = props;
+  const { open, content, showArrow, onOpenChange, trigger, className, sideOffset, arrowOffset, ...rest } = props;
   const [show, setShow] = useState(open);
 
   const onOpenChangeHandler = (_show: boolean) => {
@@ -66,7 +67,7 @@ const IPopover: React.FC<PopoverProps> = (props) => {
         data-arrow={showArrow}
       >
         <div className="rou-popover-content">{content}</div>
-        {showArrow && <Popover.Arrow offset={5} className="rou-popover-arrow" />}
+        {showArrow && <Popover.Arrow offset={arrowOffset} className="rou-popover-arrow" />}
       </Popover.Content>
     </Popover.Root>
   );
@@ -77,6 +78,7 @@ IPopover.defaultProps = {
   showArrow: true,
   sideOffset: 0,
   side: 'top',
+  arrowOffset: 5,
 };
 
 export default IPopover;

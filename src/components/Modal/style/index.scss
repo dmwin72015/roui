@@ -34,9 +34,6 @@ $modal-prefix: $ui-prefix + -modal;
     outline: 0;
     @extend %motion;
     @extend %scroll-bar;
-    @media (prefers-reduced-motion: no-preference) {
-      will-change: opacity;
-    }
 
     &[data-state='open'] {
       animation-name: fakeFadeIn;

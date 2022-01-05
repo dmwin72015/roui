@@ -11,7 +11,7 @@ export interface ButtonProps {
   disabled?: boolean;
   children?: ReactNode;
   size?: 'large' | 'small' | 'default';
-  innerRef?: any;
+  innerRef?: React.ForwardedRef<HTMLButtonElement>;
   loading?: boolean;
   type?: 'primary' | 'default' | 'danger' | 'link';
   plain?: boolean;
@@ -29,15 +29,17 @@ const Button: FC<ButtonProps> = (props) => {
         'rou-btn-plain': plain,
       })}
       type={htmlType}
-      disabled={disabled}
+      disabled={disabled || loading}
       ref={innerRef}
       {...rest}
     >
       {props.children}
       {loading && (
-        <i className="rou-btn-loading">
-          <LoadingIcon />
-        </i>
+        <div className="rou-btn-loading-inner">
+          <i className={cls('rou-btn-loading-icon')}>
+            <LoadingIcon />
+          </i>
+        </div>
       )}
     </button>
   );
