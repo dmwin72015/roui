@@ -18,7 +18,7 @@ export interface ConfigOptions {
 
 let msgInstance: NotificationInstance | null;
 
-let Message: any = {
+const Message: any = {
   name: 'Message',
   // TODO:config
   // config(options: ConfigOptions) {},

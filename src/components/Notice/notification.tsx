@@ -58,19 +58,19 @@ export default class Notification extends React.Component<NotificationProps, Not
   };
 
   add(props: NoticeProps) {
-    let { duration, onClose, closeable } = props;
-    let { notices } = this.state;
+    const { duration, closeable } = props;
+    const { notices } = this.state;
     // 大于最大数量
     if (this.props.maxCount && notices.length > this.props.maxCount) {
       return;
     }
-    let key = uuid();
-    let options: NoticeItem = { ...props, key };
+    const key = uuid();
+    const options: NoticeItem = { ...props, key };
     options.duration = isNaN(Number(duration)) ? Notification.defaultDuration : duration;
 
     let timer: number | null;
-    let callback = () => {
-      let { notices } = this.state;
+    const callback = () => {
+      const { notices } = this.state;
       this.setState({ notices: notices.filter((item) => item.key !== key) });
       window.clearTimeout(timer as number);
       timer = null;
@@ -99,7 +99,7 @@ export default class Notification extends React.Component<NotificationProps, Not
   componentWillUnmount() {}
 
   render() {
-    let { notices } = this.state;
+    const { notices } = this.state;
     const { transitionName, animationDuration } = this.props;
     const motionTime = animationDuration || this.state.animationDuration;
     return (
@@ -115,7 +115,7 @@ export default class Notification extends React.Component<NotificationProps, Not
 }
 
 Notification.newInstance = function newNoticeInstance(options: NotificationProps, cb) {
-  let div = document.createElement('div');
+  const div = document.createElement('div');
   let called = false;
 
   function ref(notice: Notification) {
@@ -140,7 +140,7 @@ Notification.newInstance = function newNoticeInstance(options: NotificationProps
     });
   }
 
-  let component = React.createElement(Notification, { ...options, ref });
+  const component = React.createElement(Notification, { ...options, ref });
 
   div.className = `rou-${options.prefix}`;
   ReactDOM.render(component, div);

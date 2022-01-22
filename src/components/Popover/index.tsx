@@ -54,9 +54,7 @@ const IPopover: React.FC<PopoverProps> = (props) => {
   };
   return (
     <Popover.Root open={show} onOpenChange={onOpenChangeHandler}>
-      <Popover.Trigger asChild {..._triggerProps}>
-        {props.children}
-      </Popover.Trigger>
+      <Popover.Trigger {..._triggerProps}>{props.children}</Popover.Trigger>
       <Popover.Content
         className={cls('rou-popover', className)}
         {...rest}
